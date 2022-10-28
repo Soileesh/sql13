@@ -1,0 +1,52 @@
+select*from contract;
+
+alter table contract 
+modify partition by RANGE (amount) (
+      PARTITION p0 VALUES LESS THAN (250000),
+      PARTITION p1 VALUES LESS THAN (500000),
+      PARTITION p2 VALUES LESS THAN (750000),
+      PARTITION p3 VALUES LESS THAN (1000000)
+      );
+      
+      
+      SET SERVEROUTPUT ON;
+  BEGIN
+  dbms_output.put_line('salam');   --ANONYMUS BLOG
+  END;
+  /
+  
+  declare
+  a nvarchar2(30);
+  BEGIN
+  select name into a from customers where customer_id=132;
+  dbms_output.put_line(a);
+  END;
+  /
+  
+  select*from customers where customer_id=132;
+  
+  create  or replace procedure smt(e_id in number)
+  AS 
+  a nvarchar2(20);
+  BEGIN 
+  select first_name || ' ' ||last_name || ' ' || email into a from employees where employee_id=e_id;
+  dbms_output.put_line(a);
+   END smt;
+ /
+  exec xy(121);
+  
+  
+  
+  create or replace function kub(amount in number) return number
+  as
+  begin return amount*amount*amount;
+  end kub;
+  /
+  
+  
+select kub(amount) from contract;
+  
+  
+  
+  
+  
